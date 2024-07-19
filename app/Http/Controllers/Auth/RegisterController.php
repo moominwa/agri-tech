@@ -66,15 +66,16 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'prefix' => $data['prefix'],
-            'name' => $data['name'],
-            'lastname' => $data['lastname'],
-            'department' => $data['department'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+{
+    return User::create([
+        'prefix' => $data['prefix'] === 'อื่นๆ' ? $data['custom_prefix'] : $data['prefix'],
+        'name' => $data['name'],
+        'lastname' => $data['lastname'],
+        'department' => $data['department'],
+        'phone' => $data['phone'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+    ]);
+}
+
 }

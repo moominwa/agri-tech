@@ -15,17 +15,18 @@
                             <label for="prefix" class="col-md-4 col-form-label text-md-end">คำนำหน้า</label>
 
                             <div class="col-md-6">
-                                <select id="prefix" class="form-control" name="prefix">
+                                <select id="prefix" class="form-control" name="prefix" onchange="checkPrefix()">
                                     <option value="นาย">นาย</option>
                                     <option value="นาง">นาง</option>
                                     <option value="นางสาว">นางสาว</option>
-                                    <!-- Add more options as needed -->
+                                    <option value="อื่นๆ">อื่นๆ</option>
                                 </select>
+                                <input type="text" id="custom_prefix" class="form-control mt-2 d-none" name="custom_prefix" placeholder="กรุณาระบุคำนำหน้า">
                                 @error('prefix')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                                @enderror
                             </div>
                         </div>
 
@@ -42,8 +43,9 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="row mb-3">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-end">นามสกุล</label></label>
+                            <label for="lastname" class="col-md-4 col-form-label text-md-end">นามสกุล</label>
 
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
@@ -55,6 +57,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="row mb-3">
                             <label for="department" class="col-md-4 col-form-label text-md-end">สาขา</label>
 
@@ -64,7 +67,6 @@
                                     <option value="วิทยาการคอมพิวเตอร์">วิทยาการคอมพิวเตอร์</option>
                                     <option value="สัตวศาสตร์">สัตวศาสตร์</option>
                                     <option value="ไฟฟ้า">ไฟฟ้า</option>
-                                    <!-- Add more options as needed -->
                                 </select>
                                 @error('department')
                                     <span class="invalid-feedback" role="alert">
@@ -137,4 +139,18 @@
         </div>
     </div>
 </div>
+
+<script>
+function checkPrefix() {
+    const prefix = document.getElementById('prefix').value;
+    const customPrefix = document.getElementById('custom_prefix');
+    if (prefix === 'อื่นๆ') {
+        customPrefix.classList.remove('d-none');
+        customPrefix.required = true;
+    } else {
+        customPrefix.classList.add('d-none');
+        customPrefix.required = false;
+    }
+}
+</script>
 @endsection
