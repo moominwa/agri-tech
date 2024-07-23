@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -51,6 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'prefix' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
+            'team_name'=> ['required', 'string','max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'department' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'min:10', ],
@@ -67,15 +70,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
 {
-    return User::create([
-        'prefix' => $data['prefix'] === 'อื่นๆ' ? $data['custom_prefix'] : $data['prefix'],
-        'name' => $data['name'],
-        'lastname' => $data['lastname'],
-        'department' => $data['department'],
-        'phone' => $data['phone'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-    ]);
+    return DB::transaction(function () use ($data) {
+        // สร้างผู้ใช้
+        $user = User::create([
+            'prefix' => $data['prefix'] === 'อื่นๆ' ? $data['custom_prefix'] : $data['prefix'],
+            'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'department' => $data['department'],
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        // สร้างทีม
+        Team::create([
+            'team_name' => $data['team_name'],
+            'department' => $data['department'],
+            'type' => 'ชาย',
+        ]);
+
+        return $user;
+    });
+    
+     
 }
 
 }

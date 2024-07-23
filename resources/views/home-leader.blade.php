@@ -1,4 +1,4 @@
 @extends('layouts.leader')
 @section('content')
-@livewire('paymentsure')
+@livewire('home-leader')
 @endsection

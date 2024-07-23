@@ -75,7 +75,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="team-n" class="col-md-4 col-form-label text-md-end" name="team_name">ชื่อทีม</label>
 
+                            <div class="col-md-6">
+                                <input id="team-n" type="text" class="form-control @error('team_name') is-invalid @enderror" name="team_name" value="{{ old('team_name') }}" required autocomplete="team_name">
+
+                                @error('team-n')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <label for="phone" class="col-md-4 col-form-label text-md-end">เบอร์โทร</label>
 

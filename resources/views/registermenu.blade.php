@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.leader')
 @section('content')
 @livewire('register-menu')
 @endsection

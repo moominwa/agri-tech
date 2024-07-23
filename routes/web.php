@@ -93,8 +93,8 @@ Route::get('/team_information', function () {
 Route::get('/player_information', function () {
     return view('player_information');
 });
-Route::get('/star_scorer', function () {
-    return view('star_scorer');
+Route::get('/star_score', function () {
+    return view('star_score');
 });
 Route::get('/score_table', function () {
     return view('score_table');
