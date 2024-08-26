@@ -110,7 +110,7 @@
                         <a class="nav-link" href="/star_score">ดาวซัลโว</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ตรวจสอบสถานะ</a>
+                        <a class="nav-link" href="/player_information">ตรวจสอบสถานะ</a>
                     </li>
 
                     <!-- Authentication Links -->

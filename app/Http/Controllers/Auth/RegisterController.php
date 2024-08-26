@@ -53,10 +53,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'prefix' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'team_name'=> ['required', 'string','max:255'],
+            // 'team_name'=> ['required', 'string','max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'department' => ['required', 'string', 'max:255'],
+            // 'department' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'min:10', ],
+            'student_code' => ['required', 'string', 'min:12', ],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string',  'confirmed'],
         ]);
@@ -76,18 +77,20 @@ class RegisterController extends Controller
             'prefix' => $data['prefix'] === 'อื่นๆ' ? $data['custom_prefix'] : $data['prefix'],
             'name' => $data['name'],
             'lastname' => $data['lastname'],
-            'department' => $data['department'],
+            // 'department' => $data['department'],
             'phone' => $data['phone'],
+            'student_code' => $data['student_code'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            // 'status' => 'หัวหน้าทีม',
         ]);
 
         // สร้างทีม
-        Team::create([
-            'team_name' => $data['team_name'],
-            'department' => $data['department'],
-            'type' => 'ชาย',
-        ]);
+        // Team::create([
+        //     'team_name' => $data['team_name'],
+        //     'department' => $data['department'],
+        //     'type' => 'ชาย',
+        // ]);
 
         return $user;
     });

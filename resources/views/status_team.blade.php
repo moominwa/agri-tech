@@ -1,4 +1,4 @@
-@extends('template_admin')
+@extends('layouts.app')
 @section('content')
 @livewire('status-team')
 @endsection

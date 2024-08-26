@@ -73,218 +73,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- ตัวอย่างรายชื่อทีม -->
-                        <tr id="row1">
-                            <td class="text-center">1</td>
-                            <td>ทีม A</td>
+                        <!-- วนลูปแสดงรายชื่อทีม -->
+                        @foreach ($teams as $index => $team)
+                        <tr id="row{{ $team->id }}">
+                            <td class="text-center">{{ $index + 1 }}</td> <!-- ลำดับจากตัวแปร $index -->
+                            <td>ทีม {{ $team->team_name }}</td>
                             <td class="group-cell text-center">
-                                <span class="text-content">A</span>
-                                <select class="form-select" name="group[1]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
+                                <span class="text-content">{{ $team->group }}</span>
+                                <select class="form-select" name="group[{{ $team->id }}]">
+                                    <option value="A" {{ $team->group == 'A' ? 'selected' : '' }}>A</option>
+                                    <option value="B" {{ $team->group == 'B' ? 'selected' : '' }}>B</option>
+                                    <option value="C" {{ $team->group == 'C' ? 'selected' : '' }}>C</option>
+                                    <option value="D" {{ $team->group == 'D' ? 'selected' : '' }}>D</option>
+                                    <option value="E" {{ $team->group == 'E' ? 'selected' : '' }}>E</option>
+                                    <option value="F" {{ $team->group == 'F' ? 'selected' : '' }}>F</option>
+                                    <option value="G" {{ $team->group == 'G' ? 'selected' : '' }}>G</option>
+                                    <option value="H" {{ $team->group == 'H' ? 'selected' : '' }}>H</option>
                                 </select>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row1')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row1')">บันทึก</button>
+                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row{{ $team->id }}')">แก้ไข</button>
+                                <button type="button" class="btn btn-success" onclick="saveGroup('row{{ $team->id }}')">บันทึก</button>
                             </td>
                         </tr>
-                        <tr id="row2">
-                            <td class="text-center">2</td>
-                            <td>ทีม B</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">B</span>
-                                <select class="form-select" name="group[2]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row2')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row2')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row3">
-                            <td class="text-center">3</td>
-                            <td>ทีม C</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">C</span>
-                                <select class="form-select" name="group[3]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row3')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row3')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row4">
-                            <td class="text-center">4</td>
-                            <td>ทีม D</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">D</span>
-                                <select class="form-select" name="group[4]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row4')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row4')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row5">
-                            <td class="text-center">5</td>
-                            <td>ทีม E</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">E</span>
-                                <select class="form-select" name="group[5]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row5')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row5')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row6">
-                            <td class="text-center">6</td>
-                            <td>ทีม F</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">F</span>
-                                <select class="form-select" name="group[6]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row6')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row6')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row7">
-                            <td class="text-center">7</td>
-                            <td>ทีม G</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">G</span>
-                                <select class="form-select" name="group[7]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row7')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row7')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row8">
-                            <td class="text-center">8</td>
-                            <td>ทีม H</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">H</span>
-                                <select class="form-select" name="group[8]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row8')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row8')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row9">
-                            <td class="text-center">9</td>
-                            <td>ทีม I</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">I</span>
-                                <select class="form-select" name="group[9]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row9')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row9')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <tr id="row10">
-                            <td class="text-center">10</td>
-                            <td>ทีม J</td>
-                            <td class="group-cell text-center">
-                                <span class="text-content">J</span>
-                                <select class="form-select" name="group[10]">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                </select>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning" onclick="toggleEditMode('row10')">แก้ไข</button>
-                                <button type="button" class="btn btn-success" onclick="saveGroup('row10')">บันทึก</button>
-                            </td>
-                        </tr>
-                        <!-- สามารถเพิ่มแถวสำหรับทีมเพิ่มเติมได้ตามต้องการ -->
+                        @endforeach
                     </tbody>
                 </table>
             </div>

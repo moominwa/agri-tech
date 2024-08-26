@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Player extends Model
+class Group extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['team_id', 'prefix', 'name', 'lastname', 'student_code', 'jersey_number', 'player_image', 'student_proof'];
+    protected $fillable = ['team_id', 'group_name'];
 
     public function team()
     {

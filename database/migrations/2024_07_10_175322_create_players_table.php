@@ -12,6 +12,7 @@ class CreatePlayersTable extends Migration
             $table->foreignId('team_id')->constrained('teams')->onDelete('cascade');
             $table->string('prefix');
             $table->string('name');
+            $table->string('lastname');
             $table->string('student_code');
             $table->string('jersey_number');
             $table->string('player_image')->nullable();

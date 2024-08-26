@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
@@ -49,7 +50,7 @@
                             <a class="nav-link" href="/star_score">ดาวซัลโว</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">ตรวจสอบสถานะ</a>
+                            <a class="nav-link" href="/player_information">ตรวจสอบสถานะ</a>
                         </li>
 
                         <!-- Authentication Links -->

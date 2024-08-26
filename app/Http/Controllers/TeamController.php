@@ -18,6 +18,7 @@ class TeamController extends Controller
             'players' => 'required|array',
             'players.*.prefix' => 'required|string|max:255',
             'players.*.name' => 'required|string|max:255',
+            'players.*.lastname' => 'required|string|max:255',
             'players.*.student_code' => 'required|string|max:255',
             'players.*.jersey_number' => 'required|string|max:255',
             'players.*.player_image' => 'nullable|file|image',

@@ -22,9 +22,11 @@ class User extends Authenticatable
         'name',
         'lastname',
         'email',
-        'department',
+        'student_code',
+        // 'department',
         'phone',
         'password',
+        
     ];
 
     /**
@@ -47,3 +49,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 }
+

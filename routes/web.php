@@ -23,6 +23,8 @@ Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 Route::get('/player_information', [TeamController::class, 'index']);
 
 
+Route::post('/check-student-code', [App\Http\Controllers\StudentController::class, 'checkStudentCode'])->name('check-student-code');
+Route::post('/check-team-name', [App\Http\Controllers\StudentController::class, 'checkTeamName'])->name('check-team-name');
 
 
 

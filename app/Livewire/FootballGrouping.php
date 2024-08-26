@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\Team;
 use Livewire\Component;
 
 class FootballGrouping extends Component
 {
     public function render()
     {
-        return view('livewire.football-grouping');
+        $team = Team ::all();
+
+        return view('livewire.football-grouping',['teams'=>$team]);
     }
 }
