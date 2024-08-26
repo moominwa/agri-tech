@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.login')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -25,9 +24,8 @@
                                 @error('prefix')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-3 row">

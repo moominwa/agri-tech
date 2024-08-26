@@ -43,7 +43,6 @@ Route::get('/football-grouping', function () {
 Route::get('/manage-results', function () {
     return view('manage-results');
 })->name('manage-results');
-
 Route::get('/manage-schedule', function () {
     return view('manage-schedule');
 })->name('manage-schedule');
