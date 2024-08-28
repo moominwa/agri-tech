@@ -61,7 +61,12 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">จัดการแบ่งกลุ่มฟุตบอล</h1>
-        <form method="POST" action="update_teams_group.php">
+        @if (session()->has('message'))
+            <div class="alert alert-success text-center">
+                {{ session('message') }}
+            </div>
+        @endif
+        <form wire:submit.prevent="save">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead class="thead-light">
@@ -73,22 +78,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- วนลูปแสดงรายชื่อทีม -->
                         @foreach ($teams as $index => $team)
                         <tr id="row{{ $team->id }}">
-                            <td class="text-center">{{ $index + 1 }}</td> <!-- ลำดับจากตัวแปร $index -->
+                            <td class="text-center">{{ $index + 1 }}</td>
                             <td>ทีม {{ $team->team_name }}</td>
                             <td class="group-cell text-center">
-                                <span class="text-content">{{ $team->group }}</span>
-                                <select class="form-select" name="group[{{ $team->id }}]">
-                                    <option value="A" {{ $team->group == 'A' ? 'selected' : '' }}>A</option>
-                                    <option value="B" {{ $team->group == 'B' ? 'selected' : '' }}>B</option>
-                                    <option value="C" {{ $team->group == 'C' ? 'selected' : '' }}>C</option>
-                                    <option value="D" {{ $team->group == 'D' ? 'selected' : '' }}>D</option>
-                                    <option value="E" {{ $team->group == 'E' ? 'selected' : '' }}>E</option>
-                                    <option value="F" {{ $team->group == 'F' ? 'selected' : '' }}>F</option>
-                                    <option value="G" {{ $team->group == 'G' ? 'selected' : '' }}>G</option>
-                                    <option value="H" {{ $team->group == 'H' ? 'selected' : '' }}>H</option>
+                                <span class="text-content">{{ $group[$team->id] ?? $team->groups }}</span>
+                                <select class="form-select" wire:model="group.{{ $team->id }}" name="group">
+                                    <option value="A" {{ $team->groups == 'A' ? 'selected' : '' }}>A</option>
+                                    <option value="B" {{ $team->groups == 'B' ? 'selected' : '' }}>B</option>
+                                    <option value="C" {{ $team->groups == 'C' ? 'selected' : '' }}>C</option>
+                                    <option value="D" {{ $team->groups == 'D' ? 'selected' : '' }}>D</option>
+                                    <option value="E" {{ $team->groups == 'E' ? 'selected' : '' }}>E</option>
+                                    <option value="F" {{ $team->groups == 'F' ? 'selected' : '' }}>F</option>
+                                    <option value="G" {{ $team->groups == 'G' ? 'selected' : '' }}>G</option>
+                                    <option value="H" {{ $team->groups == 'H' ? 'selected' : '' }}>H</option>
                                 </select>
                             </td>
                             <td class="text-center">
