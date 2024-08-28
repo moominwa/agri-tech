@@ -7,6 +7,8 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <style>
     .carousel-item img {
@@ -45,33 +47,33 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item">
-                    <img src="{{ asset('images/Apr81.jpg') }}"
+                    <img src="{{ asset('images/head1.jpg') }}"
                         class="d-block w-100 img-fluid" alt="First slide">
                     <div class="container">
-                        <div class="carousel-caption text-start">
+                        {{-- <div class="carousel-caption text-start">
                             <h1>Example headline.</h1>
                             <p class="opacity-75">Some representative placeholder content for the first slide of the
                                 carousel.</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="carousel-item">
-                     <img src="{{ asset('images/Apr81.jpg') }}"
+                     <img src="{{ asset('images/head2.jpg') }}"
                         class="d-block w-100 img-fluid" alt="Second slide">
                     <div class="container">
-                        <div class="carousel-caption">
+                        {{-- <div class="carousel-caption">
                             <h1>Another example headline.</h1>
                             <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="carousel-item active">
-                       <img src="{{ asset('images/Apr81.jpg') }}"
+                       <img src="{{ asset('images/head3.jpg') }}"
                         class="d-block w-100 img-fluid" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption text-end">
-                            <h1>One more for good measure.</h1>
-                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <h1>ยินดีต้อนรับ</h1>
+                            <p>การแข่งขันฟุตบอลคณะเกษตรศาสตร์และเทคโนโลยี Agri-Tech CUP Anti Drugs</p>
                         </div>
                     </div>
                 </div>
@@ -93,13 +95,14 @@
 
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span
-                            class="text-body-secondary">It’ll blow your mind.</span></h2>
-                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
-                        prose here.</p>
+                    <h2 class="featurette-heading fw-normal lh-1">การแข่งขันฟุตบอลคณะเกษตรศาสตร์และเทคโนโลยีต้านภัยยาเสพติด <span
+                            class="text-body-secondary"></span></h2>
+                    <p class="lead">สภาพการณ์ในยุคปัจจุบัน ฟุตบอลนับว่ามีความสําคัญเพิ่มมากขึ้นเป็นลําดับ โดยเฉพาะอย่างยิ่งใน
+                        กลุ่มเด็กและเยาวชน การเล่นฟุตบอลทําให้เกิดการพัฒนาทางด้านร่างกาย จิตใจ อารมณ์ สังคม และ
+                        สติปัญญา นอกจากนี้ ยังเป็นการใช้เวลาว่างให้เกิดประโยชน์ รวมทั้งการหลีกเลี่ยงอบายมุขและยาเสพติด</p>
                 </div>
                 <div class="col-md-5">
-                       <img src="{{ asset('images/Apr81.jpg') }}"
+                       <img src="{{ asset('images/head5.jpg') }}"
                         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                         alt="Featurette image">
                 </div>
@@ -108,57 +111,31 @@
             <hr class="featurette-divider">
             <div class="row featurette">
                 <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span
-                            class="text-body-secondary">See for yourself.</span></h2>
-                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of
-                        how this layout would work with some actual real-world content in place.</p>
+                    <h2 class="featurette-heading fw-normal lh-1">คณะเกษตรศาสตร์และเทคโนโลยี <span
+                            class="text-body-secondary"></span></h2>
+                    <p class="lead">ได้มีระบบการจัดการแข่งขันฟุตบอลคณะ
+                        เกษตรศาสตร์และเทคโนโลยี Agri-Tech Cup เพื่อนําไปใช้ในการจัดการการแข่งขันฟุตบอล Agri-Tech
+                        Cup ให้เกิดประโยชน์ เพื่อเพิ่มช่องทางการประชาสัมพันธ์สําหรับนักศึกษาได้อย่างถูกต้องให้เป็นปัจจุบัน
+                        ทันสมัย</p>
                 </div>
                 <div class="col-md-5 order-md-1">
-                       <img src="{{ asset('images/Apr81.jpg') }}"
+                       <img src="{{ asset('images/head6.jpg') }}"
                         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                         alt="Featurette image">
                 </div>
             </div>
 
-            <hr class="featurette-divider">
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span
-                            class="text-body-secondary">Checkmate.</span></h2>
-                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
-                        really intended to be actually read, simply here to give you a better view of what this would look
-                        like with some actual content. Your content.</p>
-                </div>
-                <div class="col-md-5">
-                     <img src="{{ asset('images/Apr81.jpg') }}"
-                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        alt="Featurette image">
-                </div>
-            </div>
-            <hr class="featurette-divider">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 center-content">
-                    <img src="{{ asset('images/Apr81.jpg') }}"
-                        class="bd-placeholder-img rounded-circle img-fluid" alt="Generic placeholder image">
-                    <h2 class="fw-normal">Weerapon</h2>
-                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the
-                        first column.</p>
-                </div>
-                <div class="col-lg-4 center-content">
-                    <img src="{{ asset('images/Apr81.jpg') }}"
-                    class="bd-placeholder-img rounded-circle img-fluid" alt="Generic placeholder image">
-                    <h2 class="fw-normal">Thanakorn</h2>
-                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
-                        column.</p>
-                </div>
-            </div>
-            <hr class="featurette-divider">
+
         </div>
 
-        <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p>© 2017–2024 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        <footer class="container text-center ">
+            <p>ติดต่อ : <a href="https://www.facebook.com/agri.surin" target="_blank" class="facebook-icon">
+                    <i class="fab fa-facebook"> Facebook</i>
+                </a>
+            </p>
         </footer>
+
+
     </main>
 </body>
 </html>

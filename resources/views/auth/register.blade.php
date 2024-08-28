@@ -7,6 +7,11 @@
                 <div class="card-header bg-primary text-white">{{ __('ลงทะเบียน') }}</div>
 
                 <div class="card-body">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <form method="POST" action="{{ route('register') }}" id="registrationForm">
                         @csrf
 
