@@ -3,56 +3,55 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Team;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    use RegistersUsers;
-
-    protected $redirectTo = '/home';
-
-    public function __construct()
+    public function register(Request $request)
     {
-        $this->middleware('guest');
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'prefix' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'min:10'],
-            'student_code' => ['required', 'string', 'min:12'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed'],
+        // ตรวจสอบข้อมูล
+        $validator = Validator::make($request->all(), [
+            'prefix' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'student_code' => 'required|unique:users,student_code|max:13',
+            'phone' => 'required|string|max:10',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // บันทึกผู้ใช้ใหม่
+        User::create([
+            'prefix' => $request->prefix,
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'student_code' => $request->student_code,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        // ส่งผู้ใช้ไปที่หน้าหลักหรือหน้าที่กำหนดเอง
+        return redirect()->route('home');
     }
 
-    protected function create(array $data)
+    // ฟังก์ชันสำหรับตรวจสอบรหัสนักศึกษาซ้ำแบบ Ajax
+    public function checkStudentCode(Request $request)
     {
-        return DB::transaction(function () use ($data) {
-            $user = User::create([
-                'prefix' => $data['prefix'] === 'อื่นๆ' ? $data['custom_prefix'] : $data['prefix'],
-                'name' => $data['name'],
-                'lastname' => $data['lastname'],
-                'phone' => $data['phone'],
-                'student_code' => $data['student_code'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-
-            return $user;
-        });
+        $exists = User::where('student_code', $request->student_code)->exists();
+        return response()->json(['isAvailable' => !$exists]);
     }
+
+    public function showRegistrationForm()
+{
+    return view('auth.register'); // ชี้ไปที่ view การลงทะเบียน
+}
 
     // เพิ่มฟังก์ชัน register ที่นี่
     public function register(Request $request)

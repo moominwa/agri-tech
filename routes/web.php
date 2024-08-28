@@ -3,6 +3,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 use Illuminate\Support\Facades\DB;
+
+use App\Http\Controllers\Auth\RegisterController;
+
+Route::post('/check-student-code', [RegisterController::class, 'checkStudentCode']);
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Auth::routes();
 Route::get('/register-menu', function () {
     return view('registermenu');
