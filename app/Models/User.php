@@ -23,11 +23,11 @@ class User extends Authenticatable
         'lastname',
         'email',
         'student_code',
-        // 'department',
         'phone',
         'password',
-        
+        'user_type', // เพิ่มฟิลด์นี้
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.

@@ -34,6 +34,10 @@ Route::post('/check-team-name', [App\Http\Controllers\StudentController::class, 
 
 
 
+Route::get('/admin/dashboard', function () {
+    return view('admin-dashboard');
+})->name('admin-dashboard');
+
 Route::get('/open_close', function () {
     return view('open_close');
 })->name('open_close');

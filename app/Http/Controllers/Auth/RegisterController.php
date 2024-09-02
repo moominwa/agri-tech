@@ -35,7 +35,9 @@ class RegisterController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'user_type' => true, // เพิ่มบรรทัดนี้เพื่อบันทึกสถานะเป็นหัวหน้าทีม
         ]);
+        
 
         // ส่งผู้ใช้ไปที่หน้าหลักหรือหน้าที่กำหนดเอง
         return redirect()->route('home');
@@ -53,17 +55,4 @@ class RegisterController extends Controller
     return view('auth.register'); // ชี้ไปที่ view การลงทะเบียน
 }
 
-    // เพิ่มฟังก์ชัน register ที่นี่
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        $user = $this->create($request->all());
-
-        event(new Registered($user));
-
-        Auth::logout();  // ออกจากระบบหลังจากที่ลงทะเบียนสำเร็จ
-
-        return redirect('/login')->with('success', 'ลงทะเบียนสำเร็จแล้ว กรุณาเข้าสู่ระบบ');
-    }
 }

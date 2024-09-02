@@ -16,15 +16,16 @@ return new class extends Migration
             $table->string('prefix');
             $table->string('name');
             $table->string('lastname');
-            // $table->string('department');
             $table->string('phone');
             $table->string('student_code');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('user_type')->default(false); // เพิ่มฟิลด์นี้
             $table->rememberToken();
             $table->timestamps();
         });
+        
     }
 
     /**

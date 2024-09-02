@@ -10,3 +10,18 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 }
+class AdminController extends Controller
+{
+    public function index()
+    {
+        return view('admin.dashboard');
+    }
+}
+
+class TeamLeaderController extends Controller
+{
+    public function index()
+    {
+        return view('team_leader.dashboard');
+    }
+}
