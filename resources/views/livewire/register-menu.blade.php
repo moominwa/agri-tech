@@ -24,11 +24,6 @@
             margin-top: 10px;
         }
 
-<<<<<<< HEAD
-        .text-danger {
-            color: red;
-        }
-=======
     /* ลดการจัดระยะห่างของเซลล์และเพิ่มการจัดระยะห่างภายในฟิลด์ข้อมูล */
 #playerTable td, #playerTable th {
     padding: 4px; /* ลดการจัดระยะห่างระหว่างเซลล์ */
@@ -61,7 +56,6 @@
 
 
         /* ตัวอย่างการตั้งค่าความกว้างของคอลัมน์ที่ 1 */
->>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
     </style>
 </head>
 
@@ -77,16 +71,11 @@
                 <div class="row">
                     <div class="col-md-4 form-control-custom">
                         <label for="team-name">ชื่อทีม</label>
-<<<<<<< HEAD
-                        <input type="text" class="form-control" id="team-name" name="team_name" placeholder="กรุณากรอกชื่อทีม">
-                        <span class="text-danger" id="team-name-error"></span>
-=======
                         <input type="text" class="form-control" id="team-name" name="team_name"
                             placeholder="กรุณากรอกชื่อทีม">
                         @error('team_name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
->>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                     </div>
                     <div class="col-md-4 form-control-custom">
                         <label for="department">สังกัดสาขา</label>
@@ -102,13 +91,9 @@
                             <option value="เทคโนโลยีคอมพิวเตอร์">เทคโนโลยีคอมพิวเตอร์</option>
                             <option value="วิทยาศาสตร์และคณิตศาสตร์">วิทยาศาสตร์และคณิตศาสตร์</option>
                         </select>
-<<<<<<< HEAD
-                        <span class="text-danger" id="department-error"></span>
-=======
                         @error('department')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
->>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                     </div>
                     <div class="col-md-4 form-control-custom">
                         <label for="type">ประเภท</label>
@@ -117,13 +102,9 @@
                             <option value="ชาย">ชาย</option>
                             <option value="หญิง">หญิง</option>
                         </select>
-<<<<<<< HEAD
-                        <span class="text-danger" id="type-error"></span>
-=======
                         @error('type')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
->>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                     </div>
                 </div>
 
@@ -157,12 +138,6 @@
                                     placeholder="กรุณาระบุคำนำหน้า" id="custom_prefix_0">
                                 <span class="text-danger"></span>
                             </td>
-<<<<<<< HEAD
-                            <td><input type="text" name="players[0][name]" class="form-control" placeholder="ชื่อ"><span class="text-danger"></span></td>
-                            <td><input type="text" name="players[0][lastname]" class="form-control" placeholder="นามสกุล"><span class="text-danger"></span></td>
-                            <td><input type="text" name="players[0][student_code]" class="form-control" maxlength="13" oninput="formatStudentCode(0)" placeholder="กรุณากรอกรหัสนักศึกษา" id="student_code_0"><span class="text-danger"></span></td>
-                            <td><input type="text" name="players[0][jersey_number]" class="form-control" oninput="validateJerseyNumber(0)" placeholder="เบอร์เสื้อ"><span class="text-danger"></span></td>
-=======
                             <td><input type="text" name="players[0][name]" class="form-control" placeholder="ชื่อ">
                             </td>
                             <td><input type="text" name="players[0][lastname]" class="form-control"
@@ -172,7 +147,6 @@
                                     id="student_code_0"></td>
                             <td><input type="text" name="players[0][jersey_number]" class="form-control"
                                     placeholder="เบอร์เสื้อ"></td>
->>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                             <td><input type="file" name="players[0][player_image]" class="form-control-file"></td>
                             <td><input type="file" name="players[0][student_proof]" class="form-control-file"></td>
                             <td class="text-center">
@@ -410,10 +384,6 @@
             `;
             tbody.insertAdjacentHTML('beforeend', newRow);
         });
-<<<<<<< HEAD
-    </script>
-
-=======
 
         // ฟังก์ชันลบแถว
         function deleteRow(button) {
@@ -431,7 +401,6 @@
             });
         }
     </script>
->>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
