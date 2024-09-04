@@ -126,6 +126,7 @@ Route::get('/score', function () {
     return view('score');
 });
 
+<<<<<<< HEAD
 Route::get('/leader_score', function () {
     return view('leader-score');
 });
@@ -146,6 +147,10 @@ Route::get('/leader_score_team', function () {
 
 Route::get('/paymentsure', function () {
     return view('paymentsure');
+=======
+Route::get('/payment-form', function () {
+    return view('/payment_form');
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
 });
 
 
