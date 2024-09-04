@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::post('/check-student-code', [RegisterController::class, 'checkStudentCode']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Auth::routes();
+
 Route::get('/register-menu', function () {
     return view('registermenu');
 });
@@ -41,6 +42,7 @@ Route::get('/admin/dashboard', function () {
 Route::get('/open_close', function () {
     return view('open_close');
 })->name('open_close');
+
 Route::get('/edit-profile-admin', function () {
     return view('edit-profile-admin');
 })->name('edit-profile-admin');
@@ -52,6 +54,7 @@ Route::get('/football-grouping', function () {
 Route::get('/manage-results', function () {
     return view('manage-results');
 })->name('manage-results');
+
 Route::get('/manage-schedule', function () {
     return view('manage-schedule');
 })->name('manage-schedule');
@@ -83,6 +86,11 @@ Route::get('/check_player', function () {
 Route::get('/addmin', function () {
     return view('addmin');
 });
+
+Route::get('/check_player', function () {
+    return view('check_player');
+})->name('check_player');
+
 
 
 // ปัง----------------------------------------------------------------------------------------
@@ -116,6 +124,24 @@ Route::get('/score_team', function () {
 
 Route::get('/score', function () {
     return view('score');
+});
+
+Route::get('/leader_score', function () {
+    return view('leader-score');
+});
+
+Route::get('/leader_player_information', function () {
+    return view('leader-player-information');
+});
+Route::get('/leader_star_score', function () {
+    return view('leader-star-score');
+});
+Route::get('/leader_score_table', function () {
+    return view('leader-score-table');
+});
+
+Route::get('/leader_score_team', function () {
+    return view('leader-score-team');
 });
 
 Route::get('/paymentsure', function () {

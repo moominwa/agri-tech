@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    @if (Auth::check())
+                        {{ __('ยินดีต้อนรับ, ') . Auth::user()->name . ' ' . Auth::user()->lastname . '!' }}
+                    @else
+                        {{ __('กรุณาเข้าสู่ระบบเพื่อเข้าถึงหน้านี้') }}
+                    @endif
                 </div>
             </div>
         </div>
