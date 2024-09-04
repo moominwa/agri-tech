@@ -31,7 +31,7 @@
                         <ul class="dropdown-menu" >
                             <li><a class="dropdown-item" href="">สมาชิก</a></li>
                             <li><a class="dropdown-item" href="/register-menu">เข้าร่วมแข่งขัน</a></li>
-                            <li><a class="dropdown-item" href="/paymentsure">ชำระเงิน</a></li>
+                            <li><a class="dropdown-item" href="payment-verification">ชำระเงิน</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

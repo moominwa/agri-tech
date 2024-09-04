@@ -114,8 +114,8 @@ Route::get('/score', function () {
     return view('score');
 });
 
-Route::get('/paymentsure', function () {
-    return view('paymentsure');
+Route::get('/payment-form', function () {
+    return view('/payment_form');
 });
 
 
