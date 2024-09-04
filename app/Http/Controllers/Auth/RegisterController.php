@@ -35,7 +35,9 @@ class RegisterController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'user_type' => true, // เพิ่มบรรทัดนี้เพื่อบันทึกสถานะเป็นหัวหน้าทีม
         ]);
+        
 
         // ส่งผู้ใช้ไปที่หน้าหลักหรือหน้าที่กำหนดเอง
         return redirect()->route('home');
@@ -52,6 +54,5 @@ class RegisterController extends Controller
 {
     return view('auth.register'); // ชี้ไปที่ view การลงทะเบียน
 }
-
 
 }

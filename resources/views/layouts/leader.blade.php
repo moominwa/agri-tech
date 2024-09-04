@@ -98,19 +98,19 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/score">ตารางแข่งขัน</a>
+                        <a class="nav-link" href="/leader_score">ตารางแข่งขัน</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/score_team">ผลการแข่งขัน</a>
+                        <a class="nav-link" href="/leader_score_team">ผลการแข่งขัน</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/score_table">คะแนน</a>
+                        <a class="nav-link" href="/leader_score_table">คะแนน</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/star_score">ดาวซัลโว</a>
+                        <a class="nav-link" href="/leader_star_score">ดาวซัลโว</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/player_information">ตรวจสอบสถานะ</a>
+                        <a class="nav-link" href="/leader_player_information">รายชื่อทีม</a>
                     </li>
 
                     <!-- Authentication Links -->
