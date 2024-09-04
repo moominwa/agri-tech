@@ -44,6 +44,14 @@
                     <option value="closed">ปิด</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="start_datetime">วันที่และเวลาเริ่มเปิดรับสมัคร:</label>
+                <input type="datetime-local" class="form-control" id="start_datetime" name="start_datetime">
+            </div>
+            <div class="form-group">
+                <label for="end_datetime">วันที่และเวลาปิดรับสมัคร:</label>
+                <input type="datetime-local" class="form-control" id="end_datetime" name="end_datetime">
+            </div>
             <button type="button" class="btn btn-custom mt-3" onclick="updateRegistrationStatus()">อัพเดทสถานะ</button>
         </form>
         <div class="status-container mt-4">
@@ -66,8 +74,11 @@
                 url: 'get_registration_status.php',
                 method: 'GET',
                 success: function (response) {
-                    $('#current_status').text(response);
-                    $('#registration_status').val(response);
+                    const statusData = JSON.parse(response);
+                    $('#current_status').text(statusData.status);
+                    $('#registration_status').val(statusData.status);
+                    $('#start_datetime').val(statusData.start_datetime);
+                    $('#end_datetime').val(statusData.end_datetime);
                 }
             });
         }
@@ -75,12 +86,21 @@
         // Function to update registration status
         function updateRegistrationStatus() {
             var newStatus = $('#registration_status').val();
+            var startDatetime = $('#start_datetime').val();
+            var endDatetime = $('#end_datetime').val();
+
             $.ajax({
                 url: 'update_registration_status.php',
                 method: 'POST',
-                data: { registration_status: newStatus },
+                data: {
+                    registration_status: newStatus,
+                    start_datetime: startDatetime,
+                    end_datetime: endDatetime
+                },
                 success: function (response) {
-                    $('#current_status').text(response);
+                    const statusData = JSON.parse(response);
+                    $('#current_status').text(statusData.status);
+                    alert('สถานะได้รับการอัพเดทเรียบร้อยแล้ว');
                 }
             });
         }
