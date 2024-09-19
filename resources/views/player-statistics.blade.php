@@ -1,4 +1,4 @@
 @extends('template_admin')
 @section('content')
-@livewire('player-information')
+@livewire('player-statistics')
 @endsection

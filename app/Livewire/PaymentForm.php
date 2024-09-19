@@ -10,6 +10,7 @@ class PaymentForm extends Component
 {
     use WithFileUploads; // ใช้การอัพโหลดไฟล์
 
+
     public $team_name;
     public $bank_id;
     public $bank_repay_id;

@@ -1,4 +1,5 @@
 @extends('template_admin')
+
 @section('content')
-@livewire('check-team')
+    @livewire('team-approval')
 @endsection

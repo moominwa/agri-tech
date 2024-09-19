@@ -124,7 +124,7 @@
                         <a class="nav-link" href="/leader_star_score">ดาวซัลโว</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/leader_player_information">รายชื่อทีม</a>
+                        <a class="nav-link" href="/check">รายชื่อทีม</a>
                     </li>
 
                     <!-- Authentication Links -->
@@ -182,7 +182,7 @@
                                 <li><a href="{{ route('open_close') }}"
                                         class="link-body-emphasis d-inline-flex text-decoration-none rounded">เปิด-ปิด
                                         การรับสมัคร</a></li>
-                                <li><a href="{{ route('check_team') }}"
+                                <li><a href="{{ route('team-approval') }}"
                                         class="link-body-emphasis d-inline-flex text-decoration-none rounded">อนุมัติเอกสาร</a>
                                 </li>
                                 <li><a href="{{ route('check_pay') }}"
@@ -202,13 +202,13 @@
                                 <li><a href="{{ route('football-grouping') }}"
                                         class="link-body-emphasis d-inline-flex text-decoration-none rounded">แบ่งกลุ่มการแข่งขัน</a>
                                 </li>
-                                <li><a href="{{ route('manage-schedule') }}"
+                                <li><a href="{{ route('fixture-management') }}"
                                         class="link-body-emphasis d-inline-flex text-decoration-none rounded">จัดตารางแข่งขัน</a>
                                 </li>
-                                <li><a href="{{ route('manage-results') }}"
+                                <li><a href="{{ route('match-results') }}"
                                         class="link-body-emphasis d-inline-flex text-decoration-none rounded">จัดการผลการแข่งขัน</a>
                                 </li>
-                                <li><a href="{{ route('manage-statistics') }}"
+                                <li><a href="{{ route('player-statistics') }}"
                                         class="link-body-emphasis d-inline-flex text-decoration-none rounded">จัดการสถิติ</a>
                                 </li>
                             </ul>

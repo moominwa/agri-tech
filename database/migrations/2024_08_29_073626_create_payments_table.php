@@ -20,6 +20,7 @@ class CreatePaymentsTable extends Migration
         });
     }
 
+
     public function down()
     {
         Schema::dropIfExists('payments');

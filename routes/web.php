@@ -1,14 +1,60 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
-use Illuminate\Support\Facades\DB;
-
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TeamController;
+use App\Http\Livewire\FixtureManagement;
+use App\Http\Livewire\DisplayFixtures;
+use App\Http\Livewire\FootballMatchResults;
 
+// Route::get('/match-results', function () {
+//     return view('match-results');
+// })->name('match-results');
+
+Route::get('/player-statistics', function () {
+    return view('player-statistics');
+})->name('player-statistics');
+
+Route::get('/scoreboard', function () {
+    return view('scoreboard');
+})->name('scoreboard');
+
+Route::get('/admin-display-fixtures', function () {
+    return view('display-fixtures');
+})->name('display-fixtures');
+
+Route::get('/leader-display-fixtures', function () {
+    return view('display-fixtures');
+})->name('display-fixtures');
+
+Route::get('/display-fixtures', function () {
+    return view('display-fixtures');
+})->name('display-fixtures');
+
+Route::get('/football-match-results', function () {
+    return view('football-match-results');
+})->name('football-match-results');
+
+Route::get('/fixture-management', function () {
+    return view('fixture-management');
+})->name('fixture-management');
+
+Route::get('/match-results', function () {
+    return view('match-results');
+})->name('match-results');
+
+// Route อื่นๆ
 Route::post('/check-student-code', [RegisterController::class, 'checkStudentCode']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Auth::routes();
+
+
+
+Route::get('/team-approval', function () {
+    return view('team-approval');
+})->name('team-approval');
+
 
 Route::get('/register-menu', function () {
     return view('registermenu');
@@ -17,23 +63,14 @@ Route::get('/register-menu', function () {
 Route::get('/', function () {
     return view('navbar');
 });
+
+Route::get('/test-route', function () {
+    return view('test');
+});
+
 Route::get('/score', function () {
     return view('score');
-
 });
-use App\Http\Controllers\TeamController;
-
-Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
-
-
-Route::get('/player_information', [TeamController::class, 'index']);
-
-
-Route::post('/check-student-code', [App\Http\Controllers\StudentController::class, 'checkStudentCode'])->name('check-student-code');
-Route::post('/check-team-name', [App\Http\Controllers\StudentController::class, 'checkTeamName'])->name('check-team-name');
-
-
-
 
 Route::get('/admin/dashboard', function () {
     return view('admin-dashboard');
@@ -46,6 +83,10 @@ Route::get('/open_close', function () {
 Route::get('/edit-profile-admin', function () {
     return view('edit-profile-admin');
 })->name('edit-profile-admin');
+
+Route::get('/check_teams', function () {
+    return view('check-teams');
+})->name('check-teams');
 
 Route::get('/football-grouping', function () {
     return view('football-grouping');
@@ -63,9 +104,11 @@ Route::get('/manage-statistics', function () {
     return view('manage-statistics');
 })->name('manage-statistics');
 
-Route::get('/check_team', function () {
-    return view('check_team');
-})->name('check_team');
+Route::post('/teams/store', [TeamController::class, 'store'])->name('teams.store');
+
+Route::get('/check_player', function () {
+    return view('check_player');
+})->name('check_player');
 
 Route::get('/check_pay', function () {
     return view('check_pay');
@@ -79,53 +122,34 @@ Route::get('/status_pay', function () {
     return view('status_pay');
 })->name('status_pay');
 
-Route::get('/check_player', function () {
-    return view('check_player');
-})->name('check_player');
-
 Route::get('/addmin', function () {
     return view('addmin');
 });
 
-Route::get('/check_player', function () {
-    return view('check_player');
-})->name('check_player');
-
-
-
-// ปัง----------------------------------------------------------------------------------------
-
 Route::get('/score_table', function () {
     return view('score_table');
 });
+
 Route::get('/payment', function () {
     return view('payment');
 });
+
 Route::get('/list_team', function () {
     return view('list_team');
 });
+
 Route::get('/team_information', function () {
     return view('team_information');
 });
 
-Route::get('/player_information', function () {
-    return view('player_information');
-});
+
 Route::get('/star_score', function () {
     return view('star_score');
-});
-Route::get('/score_table', function () {
-    return view('score_table');
 });
 
 Route::get('/score_team', function () {
     return view('score_team');
 });
-
-Route::get('/score', function () {
-    return view('score');
-});
-
 
 Route::get('/leader_score', function () {
     return view('leader-score');
@@ -134,9 +158,11 @@ Route::get('/leader_score', function () {
 Route::get('/leader_player_information', function () {
     return view('leader-player-information');
 });
+
 Route::get('/leader_star_score', function () {
     return view('leader-star-score');
 });
+
 Route::get('/leader_score_table', function () {
     return view('leader-score-table');
 });
@@ -148,13 +174,10 @@ Route::get('/leader_score_team', function () {
 Route::get('/paymentsure', function () {
     return view('paymentsure');
 });
-Route::get('/payment-form', function () {
-    return view('/payment_form');
 
+Route::get('/payment-form', function () {
+    return view('payment_form');
 });
 
-
-
-// จบ-----------------------------------------------------------------------------------------
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

@@ -14,4 +14,8 @@ class Team extends Model
     {
         return $this->hasMany(Player::class);
     }
+    public function group()
+    {
+        return $this->hasOne(Group::class); // 1 ทีม มี 1 กลุ่ม
+    }
 }

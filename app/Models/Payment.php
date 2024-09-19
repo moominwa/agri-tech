@@ -17,4 +17,5 @@ class Payment extends Model
         'payment_money',
         'payment_files',
     ];
+
 }
