@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <livewire:styles />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -79,154 +78,138 @@
                     </div>
                     <p class="css-3nmobs">ใช้แอพธนาคารโอนเงินบัญชีดังกล่าว แล้วนำสลิปมาแนบที่ช่องด้านล่างเพื่อชำระเงิน</p>
                 </div> --}}
-
-                <form wire:submit.prevent="submit">
-                    <div class="form-group">
-                        <label for="team_name">ชื่อทีม</label>
-                        <input type="text" id="team_name" wire:model="team_name" class="form-control" required>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="bank_id">บัญชีธนาคารของมหาลัยฯ</label>
-                            <select class="form-control " id="bank_id" name="bank_id" required="">
-                                <option value="">-</option>
-                                <option value="1">
-                                    กรุงไทย 3100808290 (
-                                    มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตสุรินทร์ )
-                                </option>
-                                <option value="2">
-                                    กรุงไทย 3016100053 (
-                                    มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน )
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-lg-3   col-sm-6">
-                            <label for="bank_repay_id">โอนจากธนาคาร</label>
-                            <select class="form-control" id="bank_repay_id" name="bank_repay_id" required="">
-                                <option value="">-</option>
-                                <option value="1">
-                                    กรุงเทพ Bangkok Bank
-                                </option>
-                                <option value="2">
-                                    กรุงไทย Krung Thai Bank
-                                </option>
-                                <option value="3">
-                                    กรุงศรีอยุธยา Bank of Ayudhaya
-                                </option>
-                                <option value="4">
-                                    กสิกรไทย KasikornBank
-                                </option>
-                                <option value="5">
-                                    เกียรตินาคิน Kiatnakin Bank
-                                </option>
-                                <option value="6">
-                                    ซิติแบงก์ Citibank
-                                </option>
-                                <option value="7">
-                                    ทหารไทย Thai Military Bank
-                                </option>
-                                <option value="8">
-                                    ทิสโก้ Thai Investment and Securities Company Bank
-                                </option>
-                                <option value="9">
-                                    ไทย BankThai
-                                </option>
-                                <option value="10">
-                                    ไทยพาณิชย์ Siam Commercial Bank
-                                </option>
-                                <option value="11">
-                                    ธนชาต Thanachart Bank
-                                </option>
-                                <option value="12">
-                                    นครหลวงไทย Siam City Bank
-                                </option>
-                                <option value="13">
-                                    ยูโอบี United Overseas Bank, Thailand
-                                </option>
-                                <option value="14">
-                                    สแตนดาร์ดชาร์เตอร์ด Standard Chartered Bank Thai
-                                </option>
-                                <option value="15">
-                                    เมกะสากลพาณิชย์ Mega International Commercial Bank
-                                </option>
-                                <option value="16">
-                                    สินเอเชีย Asia Credit Limited Bank
-                                </option>
-                                <option value="17">
-                                    เอสเอ็มอี (SME) SME Bank of Thailand
-                                </option>
-                                <option value="18">
-                                    ธกส. Bank for Agriculture and Agricultural Cooperatives
-                                </option>
-                                <option value="19">
-                                    เพื่อการส่งออกและนำเข้า Export-Import Bank of Thailand
-                                </option>
-                                <option value="20">
-                                    ออมสิน Government Saving Bank
-                                </option>
-                                <option value="21">
-                                    อาคารสงเคราะห์ Government Housing Bank
-                                </option>
-                                <option value="22">
-                                    อิสลามแห่งประเทศไทย Islamic Bank of Thailand
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-lg-3  col-sm-6">
-                            <label for="payment_date">วันที่ชำระ</label>
-                            <input class="form-control" id="payment_date" name="payment_date" type="date"
-                                value="">
-                        </div>
-                        <div class="form-group col-lg-3  col-sm-6">
-                            <label for="payment_time">เวลาที่ชำระ</label>
-                            <input class="form-control" id="payment_time" name="payment_time" type="time"
-                                value="">
-                        </div>
-                        <div class="form-group col-lg-3  col-sm-6">
-                            <label for="payment_money">ยอดโอน(บาท)</label>
-                            <input class="form-control" id="payment_money" name="payment_money" type="number"
-                                step="0.01" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="payment_files">ไฟล์ภาพหลักฐาน (png, jpg, jpeg)</label>
-                            <div class="upload-container">
-                                <input class="form-control fill" id="payment_files" name="payment_files" type="file"
-                                    accept="image/jpeg,image/png,image/jpg" aria-invalid="false">
-                                <span id="upload-success" class="upload-success"><i
-                                        class="fas fa-check-circle"></i></span>
-                            </div>
-                            <canvas id="payment_decode_image" style="display: none;" width="480"
-                                height="585"></canvas>
-                            <input id="payment_bank_codefull" name="payment_bank_codefull" type="hidden"
-                                value="">
-                            <input id="payment_bank_code" name="payment_bank_code" type="hidden" value="">
-                        </div>
-
-                        <div class="form-group text-center">
-                            <button id="submit-button" class="submit-button" type="submit" disabled>ส่ง</button>
-                        </div>
-                        @if (session()->has('message'))
+                <div>
+                    @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
                         </div>
                     @endif
 
-                    @if (session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
+                    <form action="{{ route('formpayment.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="team_name">ชื่อทีม</label>
+                            <select id="team_name" name="team_name" class="form-control" required>
+                                <option value="">-- เลือกทีม --</option>
+                                @foreach ($teams as $team)  <!-- เริ่มการวนลูป -->
+                                    <option value="{{ $team->team_name }}">{{ $team->team_name }}</option>
+                                @endforeach  <!-- ปิดการวนลูป -->
+                            </select>
                         </div>
-                    @endif
 
-                </form>
-            </div>
+                        <div class="form-group ">
+                            <label for="bank_id">บัญชีธนาคารของมหาลัยฯ</label>
+                            <select name="bank_id" id="bank_id" class="form-control" required>
+                             <option value="">-</option>
+                                <option value="กรุงไทย 3100808290 (มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตสุรินทร์ )">
+กรุงไทย 3100808290มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตสุรินทร์ )
+                                </option>
+                                <option value="กรุงไทย 3016100053 (มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน )">กรุงไทย 3016100053(มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน )</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="bank_repay_id">โอนจากธนาคาร</label>
+                            <select name="bank_repay_id" id="bank_repay_id" class="form-control" required>
+                                <option value="">-</option>
+                                <option value="กรุงเทพ Bangkok Bank">
+                                    กรุงเทพ Bangkok Bank
+                                </option>
+                                <option value="กรุงไทย Krung Thai Bank">
+                                    กรุงไทย Krung Thai Bank
+                                </option>
+                            </option>
+                            <option value="กรุงศรีอยุธยา Bank of Ayudhaya">
+                                กรุงศรีอยุธยา Bank of Ayudhaya
+                            </option>
+                            <option value=" กสิกรไทย KasikornBank">
+                                กสิกรไทย KasikornBank
+                            </option>
+                            <option value="เกียรตินาคิน Kiatnakin Bank">
+                                เกียรตินาคิน Kiatnakin Bank
+                            </option>
+                            <option value="ซิติแบงก์ Citibank">
+                                ซิติแบงก์ Citibank
+                            </option>
+                            <option value="ทหารไทย Thai Military Bank">
+                                ทหารไทย Thai Military Bank
+                            </option>
+                            <option value="ทิสโก้ Thai Investment and Securities Company Bank">
+                                ทิสโก้ Thai Investment and Securities Company Bank
+                            </option>
+                            <option value="ไทย BankThai">
+                                ไทย BankThai
+                            </option>
+                            <option value="ไทยพาณิชย์ Siam Commercial Bank">
+                                ไทยพาณิชย์ Siam Commercial Bank
+                            </option>
+                            <option value=" ธนชาต Thanachart Bank">
+                                ธนชาต Thanachart Bank
+                            </option>
+                            <option value="นครหลวงไทย Siam City Bank">
+                                นครหลวงไทย Siam City Bank
+                            </option>
+                            <option value="ยูโอบี United Overseas Bank, Thailand">
+                                ยูโอบี United Overseas Bank, Thailand
+                            </option>
+                            <option value="สแตนดาร์ดชาร์เตอร์ด Standard Chartered Bank Thai">
+                                สแตนดาร์ดชาร์เตอร์ด Standard Chartered Bank Thai
+                            </option>
+                            <option value="เมกะสากลพาณิชย์ Mega International Commercial Bank">
+                                เมกะสากลพาณิชย์ Mega International Commercial Bank
+                            </option>
+                            <option value="สินเอเชีย Asia Credit Limited Bank">
+                                สินเอเชีย Asia Credit Limited Bank
+                            </option>
+                            <option value="เอสเอ็มอี (SME) SME Bank of Thailand">
+                                เอสเอ็มอี (SME) SME Bank of Thailand
+                            </option>
+                            <option value="ธกส. Bank for Agriculture and Agricultural Cooperatives">
+                                ธกส. Bank for Agriculture and Agricultural Cooperatives
+                            </option>
+                            <option value=" เพื่อการส่งออกและนำเข้า Export-Import Bank of Thailand">
+                                เพื่อการส่งออกและนำเข้า Export-Import Bank of Thailand
+                            </option>
+                            <option value=" ออมสิน Government Saving Bank">
+                                ออมสิน Government Saving Bank
+                            </option>
+                            <option value="อาคารสงเคราะห์ Government Housing Bank">
+                                อาคารสงเคราะห์ Government Housing Bank
+                            </option>
+                            <option value="อิสลามแห่งประเทศไทย Islamic Bank of Thailand">
+                                อิสลามแห่งประเทศไทย Islamic Bank of Thailand
+                            </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="payment_date">วันที่ชำระ</label>
+                            <input type="date" name="payment_date" id="payment_date" class="form-control" required>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="payment_time">เวลาที่ชำระ</label>
+                            <input type="time" name="payment_time" id="payment_time" class="form-control" required>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="payment_money">ยอดโอน(บาท)</label>
+                            <input type="number" name="payment_money" id="payment_money" step="0.01" class="form-control" required>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="payment_files">ไฟล์ภาพหลักฐาน (png, jpg, jpeg)</label>
+                            <input type="file" name="payment_files" id="payment_files" class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3">ส่ง</button>
+                    </form>
+                </div>
+
+
+
         </div>
     </div>
-
     <script>
         document.getElementById('payment_files').addEventListener('change', function(event) {
             const fileInput = event.target;
@@ -251,6 +234,7 @@
                 document.getElementById('submit-button').disabled = true;
             }
         });
+
     </script>
 
 

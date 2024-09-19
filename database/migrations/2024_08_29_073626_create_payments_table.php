@@ -10,12 +10,13 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('team_name');
-            $table->integer('bank_id');
-            $table->integer('bank_repay_id');
+            $table->string('bank_id');
+            $table->string('bank_repay_id');
             $table->date('payment_date');
             $table->time('payment_time');
             $table->decimal('payment_money', 10, 2);
             $table->string('payment_files');
+            $table->string('payment_status')->default('pending'); // เพิ่มสถานะการชำระเงิน
             $table->timestamps();
         });
     }

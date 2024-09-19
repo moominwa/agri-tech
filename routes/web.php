@@ -3,9 +3,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\Auth\RegisterController;
-
+use App\Http\Controllers\FormPaymentController;
 Route::post('/check-student-code', [RegisterController::class, 'checkStudentCode']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Auth::routes();
@@ -130,8 +130,12 @@ Route::get('/payment-form', function () {
     return view('/payment_form');
 });
 
-
-
+Route::get('/formpayment/create', [FormPaymentController::class, 'create'])->name('formpayment.create');
+Route::post('/formpayment/store', [FormPaymentController::class, 'store'])->name('formpayment.store');
 // จบ-----------------------------------------------------------------------------------------
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// เส้นทางสำหรับอนุมัติการชำระเงิน
+Route::post('/payments/approve/{id}', [CheckController::class, 'approve'])->name('payments.approve');
+
+// เส้นทางสำหรับปฏิเสธการชำระเงิน
+Route::post('/payments/deny/{id}', [CheckController::class, 'deny'])->name('payments.deny');

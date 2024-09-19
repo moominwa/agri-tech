@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>อนุมัติการชำระเงิน</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         .container {
             padding: 20px;
@@ -32,25 +33,6 @@
             color: #721c24;
         }
     </style>
-    <script>
-        function approvePayment(index) {
-            showMessage('การชำระเงินได้รับการอนุมัติสำหรับรายการที่ ' + index, 'success');
-        }
-
-        function denyPayment(index) {
-            showMessage('การชำระเงินไม่ได้รับการอนุมัติสำหรับรายการที่ ' + index, 'error');
-        }
-
-        function showMessage(message, type) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.innerText = message;
-            messageDiv.className = 'message ' + type;
-            setTimeout(() => {
-                messageDiv.innerText = '';
-                messageDiv.className = 'message';
-            }, 3000);
-        }
-    </script>
 </head>
 <body>
     <div class="container mt-4">
@@ -68,78 +50,73 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- เริ่มจำลองข้อมูล -->
+                    @foreach ($payments as $payment)
                     <tr>
-                        <td>1</td>
-                        <td>2024-06-07</td>
-                        <td>10:00</td>
-                        <td>ทีมตัวอย่าง 1</td>
+                        <td>{{ $payment->id }}</td>
+                        <td>{{ $payment->payment_date }}</td>
+                        <td>{{ $payment->payment_time }}</td>
+                        <td>{{ $payment->team_name }}</td>
+                        <td><img class="proof-img" src="{{ asset('storage/' . $payment->payment_files) }}" alt="หลักฐานการชำระเงิน" width="100px"/></td>
                         <td>
-                            <img class="proof-img" src="https://s359.kapook.com/r/600/auto/pagebuilder/ba154685-db18-4ac7-b318-a4a2b15b9d4c.jpg" alt="หลักฐานการชำระเงิน">
+                            @if ($payment->payment_status == 'อนุมัติ')
+                                <span class="text-success"><i class="fas fa-check-circle"></i> อนุมัติแล้ว</span>
+                            @elseif ($payment->payment_status == 'ไม่อนุมัติ')
+                                <span class="text-danger"><i class="fas fa-times-circle"></i> ไม่อนุมัติ</span>
+                            @else
+                                <span class="text-warning"><i class="fas fa-hourglass-half"></i> รอการดำเนินการ</span>
+                            @endif
                         </td>
                         <td class="buttons">
-                            <button class="btn btn-success" onclick="approvePayment(1)">อนุมัติ</button>
-                            <button class="btn btn-danger" onclick="denyPayment(1)">ไม่อนุมัติ</button>
+                            <button class="btn btn-success" wire:click="approve({{ $payment->id }})">อนุมัติ</button>
+                            <button class="btn btn-danger"  wire:click="deny({{ $payment->id }})">ไม่อนุมัติ</button>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>2024-06-07</td>
-                        <td>10:00</td>
-                        <td>ทีมตัวอย่าง 1</td>
-                        <td>
-                            <img class="proof-img" src="https://s359.kapook.com/r/600/auto/pagebuilder/ba154685-db18-4ac7-b318-a4a2b15b9d4c.jpg" alt="หลักฐานการชำระเงิน">
-                        </td>
-                        <td class="buttons">
-                            <button class="btn btn-success" onclick="approvePayment(2)">อนุมัติ</button>
-                            <button class="btn btn-danger" onclick="denyPayment(2)">ไม่อนุมัติ</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2024-06-07</td>
-                        <td>10:00</td>
-                        <td>ทีมตัวอย่าง 1</td>
-                        <td>
-                            <img class="proof-img" src="https://s359.kapook.com/r/600/auto/pagebuilder/ba154685-db18-4ac7-b318-a4a2b15b9d4c.jpg" alt="หลักฐานการชำระเงิน">
-                        </td>
-                        <td class="buttons">
-                            <button class="btn btn-success" onclick="approvePayment(3)">อนุมัติ</button>
-                            <button class="btn btn-danger" onclick="denyPayment(3)">ไม่อนุมัติ</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2024-06-07</td>
-                        <td>10:00</td>
-                        <td>ทีมตัวอย่าง 1</td>
-                        <td>
-                            <img class="proof-img" src="https://s359.kapook.com/r/600/auto/pagebuilder/ba154685-db18-4ac7-b318-a4a2b15b9d4c.jpg" alt="หลักฐานการชำระเงิน">
-                        </td>
-                        <td class="buttons">
-                            <button class="btn btn-success" onclick="approvePayment(4)">อนุมัติ</button>
-                            <button class="btn btn-danger" onclick="denyPayment(4)">ไม่อนุมัติ</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2024-06-07</td>
-                        <td>10:00</td>
-                        <td>ทีมตัวอย่าง 1</td>
-                        <td>
-                            <img class="proof-img" src="https://s359.kapook.com/r/600/auto/pagebuilder/ba154685-db18-4ac7-b318-a4a2b15b9d4c.jpg" alt="หลักฐานการชำระเงิน">
-                        </td>
-                        <td class="buttons">
-                            <button class="btn btn-success" onclick="approvePayment(5)">อนุมัติ</button>
-                            <button class="btn btn-danger" onclick="denyPayment(5)">ไม่อนุมัติ</button>
-                        </td>
-                    </tr>
-                    <!-- จบจำลองข้อมูล -->
+                    @endforeach
                 </tbody>
             </table>
         </div>
-        <div id="message" class="message"></div>
+        <div id="message" class="message">
+            @if (session()->has('message'))
+                {{session('message')}}
+            @endif
+        </div>
     </div>
 </body>
+{{-- <script>
+    function approvePayment(id) {
+        fetch(`/payments/approve/${id}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => showMessage(data.message, 'success'))
+        .catch(error => showMessage('เกิดข้อผิดพลาด', 'error'));
+    }
+
+    function denyPayment(id) {
+        fetch(`/payments/deny/${id}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => showMessage(data.message, 'error'))
+        .catch(error => showMessage('เกิดข้อผิดพลาด', 'error'));
+    }
+
+    function showMessage(message, type) {
+        const messageDiv = document.getElementById('message');
+        messageDiv.innerText = message;
+        messageDiv.className = 'message ' + type;
+        setTimeout(() => {
+            messageDiv.innerText = '';
+            messageDiv.className = 'message';
+        }, 3000);
+    }
+</script> --}}
 </html>

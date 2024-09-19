@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="bank_id">บัญชีธนาคารของมหาลัยฯ</label>
-                            <select class="form-control " id="bank_id" name="bank_id" required="">
+                            <select class="form-control " id="bank_id" wire:model="bank_id" required="">
                                 <option value="">-</option>
                                 <option value="1">
                                     กรุงไทย 3100808290 (
@@ -106,7 +106,7 @@
                     <div class="row">
                         <div class="form-group col-lg-3   col-sm-6">
                             <label for="bank_repay_id">โอนจากธนาคาร</label>
-                            <select class="form-control" id="bank_repay_id" name="bank_repay_id" required="">
+                            <select class="form-control" id="bank_repay_id" wire:model="bank_repay_id" required="">
                                 <option value="">-</option>
                                 <option value="1">
                                     กรุงเทพ Bangkok Bank
@@ -179,54 +179,53 @@
 
                         <div class="form-group col-lg-3  col-sm-6">
                             <label for="payment_date">วันที่ชำระ</label>
-                            <input class="form-control" id="payment_date" name="payment_date" type="date"
+                            <input class="form-control" id="payment_date" wire:model="payment_date" type="date"
                                 value="">
                         </div>
                         <div class="form-group col-lg-3  col-sm-6">
                             <label for="payment_time">เวลาที่ชำระ</label>
-                            <input class="form-control" id="payment_time" name="payment_time" type="time"
+                            <input class="form-control" id="payment_time" wire:model="payment_time" type="time"
                                 value="">
                         </div>
                         <div class="form-group col-lg-3  col-sm-6">
                             <label for="payment_money">ยอดโอน(บาท)</label>
-                            <input class="form-control" id="payment_money" name="payment_money" type="number"
+                            <input class="form-control" id="payment_money" wire:model="payment_money" type="number"
                                 step="0.01" value="">
                         </div>
                         <div class="form-group">
                             <label for="payment_files">ไฟล์ภาพหลักฐาน (png, jpg, jpeg)</label>
                             <div class="upload-container">
-                                <input class="form-control fill" id="payment_files" name="payment_files" type="file"
+                                <input class="form-control fill" id="payment_files" wire:model="payment_files" type="file"
                                     accept="image/jpeg,image/png,image/jpg" aria-invalid="false">
                                 <span id="upload-success" class="upload-success"><i
                                         class="fas fa-check-circle"></i></span>
                             </div>
                             <canvas id="payment_decode_image" style="display: none;" width="480"
                                 height="585"></canvas>
-                            <input id="payment_bank_codefull" name="payment_bank_codefull" type="hidden"
+                            <input id="payment_bank_codefull" wire:model=name="payment_bank_codefull" type="hidden"
                                 value="">
-                            <input id="payment_bank_code" name="payment_bank_code" type="hidden" value="">
+                            <input id="payment_bank_code" wire:model=name="payment_bank_code" type="hidden" value="">
                         </div>
 
                         <div class="form-group text-center">
-                            <button id="submit-button" class="submit-button" type="submit" disabled>ส่ง</button>
+                            <button id="submit-button" class="submit-button" type="submit" >ส่ง</button>
                         </div>
                         @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
                         </div>
                     @endif
-
                     @if (session()->has('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
                         </div>
                     @endif
-
                 </form>
             </div>
+
+
         </div>
     </div>
-
     <script>
         document.getElementById('payment_files').addEventListener('change', function(event) {
             const fileInput = event.target;
@@ -251,6 +250,7 @@
                 document.getElementById('submit-button').disabled = true;
             }
         });
+
     </script>
 
 

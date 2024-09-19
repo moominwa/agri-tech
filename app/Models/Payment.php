@@ -16,6 +16,7 @@ class Payment extends Model
         'payment_time',
         'payment_money',
         'payment_files',
+        'payment_status',
     ];
 
 }
