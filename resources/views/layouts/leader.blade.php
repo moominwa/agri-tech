@@ -98,7 +98,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/leader_score">ตารางแข่งขัน</a>
+                        <a class="nav-link" href="/leader-display-fixtures">ตารางแข่งขัน</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/leader_score_team">ผลการแข่งขัน</a>
@@ -162,6 +162,7 @@
                         <div class="collapse" id="registration-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="/register-menu" class="link-body-emphasis d-inline-flex text-decoration-none rounded">เอกสารการสมัคร</a></li>
+                                
                                 <li><a href="/payment-form" class="link-body-emphasis d-inline-flex text-decoration-none rounded">ชำระเงิน</a></li>
                                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">ตรวจสอบสถานะการสมัคร</a></li>
                             </ul>

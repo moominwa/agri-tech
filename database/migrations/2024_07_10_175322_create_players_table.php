@@ -15,6 +15,9 @@ class CreatePlayersTable extends Migration
             $table->string('lastname');
             $table->string('student_code');
             $table->string('jersey_number');
+            $table->integer('yellow_cards')->default(0); // เพิ่มคอลัมน์ ใบเหลือง
+            $table->integer('red_cards')->default(0); // เพิ่มคอลัมน์ ใบแดง
+            $table->integer('goals')->default(0); // เพิ่มคอลัมน์ จำนวนประตู
             $table->string('player_image')->nullable();
             $table->string('student_proof')->nullable();
             $table->timestamps();

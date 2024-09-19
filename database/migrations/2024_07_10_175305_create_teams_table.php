@@ -13,6 +13,7 @@ class CreateTeamsTable extends Migration
             $table->string('team_name');
             $table->string('department');
             $table->string('type');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending'); // คอลัมน์สถานะ
             $table->timestamps();
         });
     }

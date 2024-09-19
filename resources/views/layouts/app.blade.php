@@ -16,22 +16,22 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Custom CSS -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-6t4iNsk+akUmDxrm5ckzqU5Rs+02MBITu3Ejg5o6WcBjj10ROgELl9BZb3YZ7mnq" crossorigin="anonymous">
 
     <!-- Livewire Styles -->
     @livewireStyles
-</head>
-<style>
-    .bg-orange {
-    background-color: orange;
-}
 
-</style>
+    <style>
+        .bg-orange {
+            background-color: orange;
+        }
+    </style>
+</head>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-orange shadow-sm ">
+        <nav class="navbar navbar-expand-md navbar-light bg-orange shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Agri-Tech
@@ -51,19 +51,19 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/score">ตารางแข่งขัน</a>
+                            <a class="nav-link" href="/display-fixtures">ตารางแข่งขัน</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/score_team">ผลการแข่งขัน</a>
+                            <a class="nav-link" href="/football-match-results">ผลการแข่งขัน</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/score_table">คะแนน</a>
+                            <a class="nav-link" href="/scoreboard">คะแนน</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/star_score">ดาวซัลโว</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/player_information">รายชื่อทีม</a>
+                            <a class="nav-link" href="leader_player_information">รายชื่อทีม</a>
                         </li>
 
                         <!-- Authentication Links -->

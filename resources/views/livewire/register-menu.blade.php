@@ -11,10 +11,14 @@
         /* Custom CSS */
         body {
             background-color: #f0f2f5;
+            background-color: #f0f2f5;
         }
 
         .container {
             background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -98,6 +102,9 @@
         <h3 class="text-center py-3">ใบสมัครเข้าร่วมการแข่งขัน</h3>
         <h3 class="text-center py-3">ฟุตบอลคณะเกษตรศาสตร์และเทคโนโลยีต้านภัยยาเสพติด</h3>
         <h3 class="text-center py-3">ครั้งที่ 17 “17th Agri-Tech CUP Anti Drugs”</h3>
+        <h3 class="text-center py-3">ใบสมัครเข้าร่วมการแข่งขัน</h3>
+        <h3 class="text-center py-3">ฟุตบอลคณะเกษตรศาสตร์และเทคโนโลยีต้านภัยยาเสพติด</h3>
+        <h3 class="text-center py-3">ครั้งที่ 17 “17th Agri-Tech CUP Anti Drugs”</h3>
 
         <form action="{{ route('teams.store') }}" method="POST" enctype="multipart/form-data" id="teamForm">
             @csrf
@@ -105,8 +112,11 @@
                 <div class="row">
                     <div class="col-md-4 form-control-custom">
                         <label for="team-name">ชื่อทีม</label>
-                        <input type="text" class="form-control" id="team-name" name="team_name" placeholder="กรุณากรอกชื่อทีม">
-                        <span class="text-danger" id="team-name-error"></span>
+                        <input type="text" class="form-control" id="team-name" name="team_name"
+                            placeholder="กรุณากรอกชื่อทีม">
+                        @error('team_name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-4 form-control-custom">
                         <label for="department">สังกัดสาขา</label>
@@ -122,7 +132,9 @@
                             <option value="เทคโนโลยีคอมพิวเตอร์">เทคโนโลยีคอมพิวเตอร์</option>
                             <option value="วิทยาศาสตร์และคณิตศาสตร์">วิทยาศาสตร์และคณิตศาสตร์</option>
                         </select>
-                        <span class="text-danger" id="department-error"></span>
+                        @error('department')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-4 form-control-custom">
                         <label for="type">ประเภท</label>
@@ -131,7 +143,9 @@
                             <option value="ชาย">ชาย</option>
                             <option value="หญิง">หญิง</option>
                         </select>
-                        <span class="text-danger" id="type-error"></span>
+                        @error('type')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -152,7 +166,9 @@
                     <tbody id="playerTable">
                         <tr>
                             <td class="text-center">1</td>
+                            <td class="text-center">1</td>
                             <td>
+                                <select name="players[0][prefix]" class="form-control prefix-select" onchange="checkPrefix(this, 0)">
                                 <select name="players[0][prefix]" class="form-control prefix-select" onchange="checkPrefix(this, 0)">
                                     <option value="" disabled selected>คำนำหน้า</option>
                                     <option value="นาย">นาย</option>
@@ -164,15 +180,21 @@
                                     placeholder="กรุณาระบุคำนำหน้า" id="custom_prefix_0">
                                 <span class="text-danger"></span>
                             </td>
-                            <td><input type="text" name="players[0][name]" class="form-control" placeholder="ชื่อ"><span class="text-danger"></span></td>
-                            <td><input type="text" name="players[0][lastname]" class="form-control" placeholder="นามสกุล"><span class="text-danger"></span></td>
-                            <td><input type="text" name="players[0][student_code]" class="form-control" maxlength="13" oninput="formatStudentCode(0)" placeholder="กรุณากรอกรหัสนักศึกษา" id="student_code_0"><span class="text-danger"></span></td>
-                            <td><input type="text" name="players[0][jersey_number]" class="form-control" oninput="validateJerseyNumber(0)" placeholder="เบอร์เสื้อ"><span class="text-danger"></span></td>
+                            <td><input type="text" name="players[0][name]" class="form-control" placeholder="ชื่อ">
+                            </td>
+                            <td><input type="text" name="players[0][lastname]" class="form-control"
+                                    placeholder="นามสกุล"></td>
+                            <td><input type="text" name="players[0][student_code]" class="form-control"
+                                    maxlength="13" oninput="formatStudentCode(0)" placeholder="กรุณากรอกรหัสนักศึกษา"
+                                    id="student_code_0"></td>
+                            <td><input type="text" name="players[0][jersey_number]" class="form-control"
+                                    placeholder="เบอร์เสื้อ"></td>
                             <td><input type="file" name="players[0][player_image]" class="form-control-file"></td>
                             <td><input type="file" name="players[0][student_proof]" class="form-control-file"></td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-warning edit-btn">แก้ไข</button>
                                 <button type="button" class="btn btn-danger delete-btn">ลบ</button>
+                                <button type="button" class="btn btn-primary save-btn" style="display: none;">บันทึก</button>
                                 <button type="button" class="btn btn-primary save-btn" style="display: none;">บันทึก</button>
                             </td>
                         </tr>
@@ -373,6 +395,7 @@
 
         // เพิ่มแถวใหม่ในตาราง
         document.querySelector('.add-row-btn').addEventListener('click', function () {
+        document.querySelector('.add-row-btn').addEventListener('click', function () {
             let tbody = document.querySelector('#playerTable');
             let index = tbody.querySelectorAll('tr').length;
             let newRow = `
@@ -398,14 +421,30 @@
                     <td class="text-center">
                         <button type="button" class="btn btn-warning edit-btn">แก้ไข</button>
                         <button type="button" class="btn btn-danger delete-btn">ลบ</button>
+                        <button type="button" class="btn btn-danger delete-btn">ลบ</button>
                         <button type="button" class="btn btn-primary save-btn" style="display: none;">บันทึก</button>
                     </td>
                 </tr>
             `;
             tbody.insertAdjacentHTML('beforeend', newRow);
         });
-    </script>
 
+        // ฟังก์ชันลบแถว
+        function deleteRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            // ปรับหมายเลขลำดับใหม่หลังจากลบแถว
+            updateRowNumbers();
+        }
+
+        // ปรับหมายเลขลำดับในตาราง
+        function updateRowNumbers() {
+            const rows = document.querySelectorAll('#playerTable tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td').textContent = index + 1;
+            });
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
