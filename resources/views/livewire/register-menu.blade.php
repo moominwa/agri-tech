@@ -24,72 +24,44 @@
             margin-top: 10px;
         }
 
+<<<<<<< HEAD
         .text-danger {
-            color: #dc3545;
-            font-size: 0.875rem;
-            margin-top: 5px;
-            display: block;
+            color: red;
         }
+=======
+    /* ลดการจัดระยะห่างของเซลล์และเพิ่มการจัดระยะห่างภายในฟิลด์ข้อมูล */
+#playerTable td, #playerTable th {
+    padding: 4px; /* ลดการจัดระยะห่างระหว่างเซลล์ */
+}
 
-        h3 {
-            color: #2c3e50;
-        }
+#playerTable input[type="text"], #playerTable select, #playerTable input[type="file"] {
+    width: 95%; /* ใช้ความกว้างเกือบทั้งหมดของเซลล์ */
+    box-sizing: border-box; /* รวมการจัดระยะห่างในการคำนวณความกว้าง */
+    font-size: 14px; /* ลดขนาดตัวอักษรของฟิลด์ข้อมูล */
+}
 
-        .table th, .table td {
-            vertical-align: middle;
-            text-align: center;
-        }
+#playerTable select {
+    padding: 4px; /* ลดการจัดระยะห่างภายใน select */
+}
 
-        .table thead th {
-            background-color: #f7f7f7;
-            color: #333;
-        }
+#playerTable input[type="file"] {
+    padding: 2px; /* ลดการจัดระยะห่างภายใน input type="file" */
+}
 
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
+/* กำหนดความกว้างของคอลัมน์ที่ชัดเจนเพื่อความเรียบร้อย */
+#playerTable td:nth-child(1) { width: 40px; } /* กำหนดความกว้างของคอลัมนลำดับ */
+#playerTable td:nth-child(2) { width: 110px; } /* กำหนดความกว้างของคอลัมน์คำนำหน้า */
+#playerTable td:nth-child(3) { width: 110px; } /* กำหนดความกว้างของคอลัมน์ที่ชื่อ */
+#playerTable td:nth-child(4) { width: 100px; } /* กำหนดความกว้างของคอลัมน์ที่นามสกุล*/
+#playerTable td:nth-child(5) { width: 150px; } /* กำหนดความกว้างของคอลัมน์ที่รหัส */
+#playerTable td:nth-child(6) { width: 100px; } /* กำหนดความกว้างของคอลัมน์ที */
+#playerTable td:nth-child(7) { width: 100px; } /* กำหนดความกว้างของคอลัมน์ที่เจ็ด */
+#playerTable td:nth-child(8) { width: 200px; } /* กำหนดความกว้างของคอลัมน์ที่แปด */
+#playerTable td:nth-child(9) { width: 200px; } /* กำหนดความกว้างของคอลัมน์ที่เก้า */
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
 
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #bd2130;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
-        }
-
-        .table-responsive {
-            margin-top: 20px;
-        }
-
-        .add-row-btn {
-            margin-bottom: 20px;
-        }
-
-        .delete-btn {
-            margin-left: 5px;
-        }
-
-        .edit-btn {
-            margin-right: 5px;
-        }
+        /* ตัวอย่างการตั้งค่าความกว้างของคอลัมน์ที่ 1 */
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
     </style>
 </head>
 
@@ -105,8 +77,16 @@
                 <div class="row">
                     <div class="col-md-4 form-control-custom">
                         <label for="team-name">ชื่อทีม</label>
+<<<<<<< HEAD
                         <input type="text" class="form-control" id="team-name" name="team_name" placeholder="กรุณากรอกชื่อทีม">
                         <span class="text-danger" id="team-name-error"></span>
+=======
+                        <input type="text" class="form-control" id="team-name" name="team_name"
+                            placeholder="กรุณากรอกชื่อทีม">
+                        @error('team_name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                     </div>
                     <div class="col-md-4 form-control-custom">
                         <label for="department">สังกัดสาขา</label>
@@ -122,7 +102,13 @@
                             <option value="เทคโนโลยีคอมพิวเตอร์">เทคโนโลยีคอมพิวเตอร์</option>
                             <option value="วิทยาศาสตร์และคณิตศาสตร์">วิทยาศาสตร์และคณิตศาสตร์</option>
                         </select>
+<<<<<<< HEAD
                         <span class="text-danger" id="department-error"></span>
+=======
+                        @error('department')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                     </div>
                     <div class="col-md-4 form-control-custom">
                         <label for="type">ประเภท</label>
@@ -131,7 +117,13 @@
                             <option value="ชาย">ชาย</option>
                             <option value="หญิง">หญิง</option>
                         </select>
+<<<<<<< HEAD
                         <span class="text-danger" id="type-error"></span>
+=======
+                        @error('type')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                     </div>
                 </div>
 
@@ -164,10 +156,22 @@
                                     placeholder="กรุณาระบุคำนำหน้า" id="custom_prefix_0">
                                 <span class="text-danger"></span>
                             </td>
+<<<<<<< HEAD
                             <td><input type="text" name="players[0][name]" class="form-control" placeholder="ชื่อ"><span class="text-danger"></span></td>
                             <td><input type="text" name="players[0][lastname]" class="form-control" placeholder="นามสกุล"><span class="text-danger"></span></td>
                             <td><input type="text" name="players[0][student_code]" class="form-control" maxlength="13" oninput="formatStudentCode(0)" placeholder="กรุณากรอกรหัสนักศึกษา" id="student_code_0"><span class="text-danger"></span></td>
                             <td><input type="text" name="players[0][jersey_number]" class="form-control" oninput="validateJerseyNumber(0)" placeholder="เบอร์เสื้อ"><span class="text-danger"></span></td>
+=======
+                            <td><input type="text" name="players[0][name]" class="form-control" placeholder="ชื่อ">
+                            </td>
+                            <td><input type="text" name="players[0][lastname]" class="form-control"
+                                    placeholder="นามสกุล"></td>
+                            <td><input type="text" name="players[0][student_code]" class="form-control"
+                                    maxlength="13" oninput="formatStudentCode(0)" placeholder="กรุณากรอกรหัสนักศึกษา"
+                                    id="student_code_0"></td>
+                            <td><input type="text" name="players[0][jersey_number]" class="form-control"
+                                    placeholder="เบอร์เสื้อ"></td>
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
                             <td><input type="file" name="players[0][player_image]" class="form-control-file"></td>
                             <td><input type="file" name="players[0][student_proof]" class="form-control-file"></td>
                             <td class="text-center">
@@ -404,8 +408,28 @@
             `;
             tbody.insertAdjacentHTML('beforeend', newRow);
         });
+<<<<<<< HEAD
     </script>
 
+=======
+
+        // ฟังก์ชันลบแถว
+        function deleteRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+            // ปรับหมายเลขลำดับใหม่หลังจากลบแถว
+            updateRowNumbers();
+        }
+
+        // ปรับหมายเลขลำดับในตาราง
+        function updateRowNumbers() {
+            const rows = document.querySelectorAll('#playerTable tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td').textContent = index + 1;
+            });
+        }
+    </script>
+>>>>>>> fcdf850803d4cc75d81fe7c64425196f347e3eea
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
